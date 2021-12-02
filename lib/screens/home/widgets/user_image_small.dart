@@ -2,9 +2,11 @@
 import 'package:flutter/material.dart';
 
 class UserImageSmall extends StatelessWidget {
+  final double width;
+  final double height;
   const UserImageSmall({
     Key? key,
-    required this.imageUrl,
+    required this.imageUrl, this.width = 70, this.height = 70,
   }) : super(key: key);
 
   final String imageUrl;
@@ -16,8 +18,8 @@ class UserImageSmall extends StatelessWidget {
         top: 8,
         right: 5,
       ),
-      height: 70,
-      width: 70,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(
