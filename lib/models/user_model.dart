@@ -44,7 +44,7 @@ class User extends Equatable {
       ],
       interest: ['Music','Politics','Hiking'],
       bio:
-          "Sed ut perspiciatis unde omnis iste natus error sit volums Sed ut perspiciatis unde omnis iste natus error sit volums Sed ut perspiciatis unde omnis iste natus error sit volums Sed ut perspiciatis unde omnis iste natus error sit volums",
+          "tus error sit volums Sed ut perspiciatis unde omnis iste natus error sit volums Sed ut perspiciatis unde omnis iste natus error sit volums",
       jobTitle: 'Job Title Here',
     ),
     User(

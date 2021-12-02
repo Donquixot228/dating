@@ -1,8 +1,3 @@
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
@@ -11,14 +6,17 @@ import 'widgets/widgets.dart';
 class Demographics extends StatelessWidget {
   final TabController tabController;
 
-
-  const Demographics({Key? key,required this.tabController,}) : super(key: key);
+  const Demographics({
+    Key? key,
+    required this.tabController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = TextEditingController();
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
-      child:  Column(
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
@@ -28,16 +26,28 @@ class Demographics extends StatelessWidget {
                 tabController: tabController,
                 text: "Whats\'s your gender?",
               ),
-              SizedBox(height: 10,),
-              CustomCheckBox(tabController: tabController,text: 'MALE',),
-              CustomCheckBox(tabController: tabController,text: 'FEMALE',),
-             SizedBox(height: 100,),
+              SizedBox(
+                height: 10,
+              ),
+              CustomCheckBox(
+                tabController: tabController,
+                text: 'MALE',
+              ),
+              CustomCheckBox(
+                tabController: tabController,
+                text: 'FEMALE',
+              ),
+              SizedBox(
+                height: 100,
+              ),
               CustomTextHeader(
                 tabController: tabController,
                 text: "Whats\'s your age?",
               ),
               CustomTextField(
-                  tabController: tabController, text: 'Enter your Age'),
+                  controller: controller,
+                  tabController: tabController,
+                  text: 'Enter your Age'),
             ],
           ),
           Column(
@@ -51,7 +61,8 @@ class Demographics extends StatelessWidget {
               SizedBox(height: 10),
               CustomButton(tabController: tabController, text: 'Next Step'),
             ],
-          ),        ],
+          ),
+        ],
       ),
     );
   }

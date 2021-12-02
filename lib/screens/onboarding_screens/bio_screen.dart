@@ -13,6 +13,7 @@ class Biography extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = TextEditingController();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Column(
@@ -26,7 +27,10 @@ class Biography extends StatelessWidget {
                 text: "Describe Yourself a bit",
               ),
               CustomTextField(
-                  tabController: tabController, text: 'Enter your BIO'),
+                tabController: tabController,
+                text: 'Enter your BIO',
+                controller: controller,
+              ),
               SizedBox(
                 height: 100,
               ),
@@ -43,7 +47,8 @@ class Biography extends StatelessWidget {
                   CustomTextContainer(
                     tabController: tabController,
                     text: 'Economics',
-                  ),CustomTextContainer(
+                  ),
+                  CustomTextContainer(
                     tabController: tabController,
                     text: 'ART',
                   ),
@@ -54,25 +59,25 @@ class Biography extends StatelessWidget {
                 ],
               ),
               Row(
-                  children: [
-                    CustomTextContainer(
-                      tabController: tabController,
-                      text: 'Nature',
-                    ),
-                    CustomTextContainer(
-                      tabController: tabController,
-                      text: 'Hiking',
-                    ),CustomTextContainer(
-                      tabController: tabController,
-                      text: 'Footlball',
-                    ),
-                    CustomTextContainer(
-                      tabController: tabController,
-                      text: 'Movies',
-                    ),
-                  ],
-                ),
-
+                children: [
+                  CustomTextContainer(
+                    tabController: tabController,
+                    text: 'Nature',
+                  ),
+                  CustomTextContainer(
+                    tabController: tabController,
+                    text: 'Hiking',
+                  ),
+                  CustomTextContainer(
+                    tabController: tabController,
+                    text: 'Footlball',
+                  ),
+                  CustomTextContainer(
+                    tabController: tabController,
+                    text: 'Movies',
+                  ),
+                ],
+              ),
             ],
           ),
           Column(
@@ -86,7 +91,8 @@ class Biography extends StatelessWidget {
               SizedBox(height: 10),
               CustomButton(tabController: tabController, text: 'Next Step'),
             ],
-          ),        ],
+          ),
+        ],
       ),
     );
   }

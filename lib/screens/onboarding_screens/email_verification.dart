@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
@@ -7,11 +6,15 @@ import 'widgets/widgets.dart';
 class EmailVerification extends StatelessWidget {
   final TabController tabController;
 
-
-  const EmailVerification({Key? key,required this.tabController,}) : super(key: key);
+  const EmailVerification({
+    Key? key,
+    required this.tabController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = TextEditingController();
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Column(
@@ -24,9 +27,12 @@ class EmailVerification extends StatelessWidget {
                 text: "Did You Get The Verification Code ?",
               ),
               CustomTextField(
-                  tabController: tabController, text: 'Enter yout Code'),
+                  controller: controller,
+                  tabController: tabController,
+                  text: 'Enter yout Code'),
             ],
-          ), Column(
+          ),
+          Column(
             children: [
               StepProgressIndicator(
                 totalSteps: 6,
@@ -42,5 +48,4 @@ class EmailVerification extends StatelessWidget {
       ),
     );
   }
-  }
-
+}
