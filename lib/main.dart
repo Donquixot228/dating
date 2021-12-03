@@ -1,6 +1,8 @@
 import 'package:dating/blocs/auth/auth_bloc.dart';
+import 'package:dating/blocs/images_b/images_bloc.dart';
 import 'package:dating/blocs/swipe/swipe_bloc.dart';
 import 'package:dating/repositories/auth_repository.dart';
+import 'package:dating/repositories/database/database_repository.dart';
 import 'package:dating/screens/home/home_screen.dart';
 import 'package:dating/screens/screens.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -43,6 +45,13 @@ class MyApp extends StatelessWidget {
                 LoadUsersEvent(users: User.users),
               ),
           ),
+          BlocProvider(
+            create: (_) => ImagesBloc(
+              dataBaseRepository: DataBaseRepository(),
+            )..add(
+                LoadImages(),
+              ),
+          )
         ],
         child: MaterialApp(
           title: 'Dating App',

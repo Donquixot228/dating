@@ -19,7 +19,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         children: [
           Expanded(
             child: Image.asset(
-              'assets/images/logo.png',
+              'assets/images_b/logo.png',
               height: 50,
             ),
           ),

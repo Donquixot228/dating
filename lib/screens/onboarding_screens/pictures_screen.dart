@@ -1,4 +1,6 @@
+import 'package:dating/blocs/images_b/images_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import 'widgets/widgets.dart';
@@ -26,19 +28,36 @@ class Pictures extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  CustomImageContainer(tabController: tabController),
-                  CustomImageContainer(tabController: tabController),
-                  CustomImageContainer(tabController: tabController),
-                ],
-              ),
-              Row(
-                children: [
-                  CustomImageContainer(tabController: tabController),
-                  CustomImageContainer(tabController: tabController),
-                  CustomImageContainer(tabController: tabController),
-                ],
+              BlocBuilder<ImagesBloc, ImagesState>(
+                builder: (context, state) {
+                  if (state is ImagesInitial) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (state is ImagesLoaded) {
+                    return Column(
+                      children: [
+                        Row(
+                          children: [
+                            CustomImageContainer(tabController: tabController),
+                            CustomImageContainer(tabController: tabController),
+                            CustomImageContainer(tabController: tabController),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            CustomImageContainer(tabController: tabController),
+                            CustomImageContainer(tabController: tabController),
+                            CustomImageContainer(tabController: tabController),
+                          ],
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Text('Go Wrong');
+                  }
+                },
               ),
             ],
           ),
@@ -53,7 +72,8 @@ class Pictures extends StatelessWidget {
               SizedBox(height: 10),
               CustomButton(tabController: tabController, text: 'Next Step'),
             ],
-          ),        ],
+          ),
+        ],
       ),
     );
   }
