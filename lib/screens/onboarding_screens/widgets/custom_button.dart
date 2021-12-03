@@ -1,18 +1,16 @@
+import 'package:dating/cubits/signup/signup_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 class CustomButton extends StatelessWidget {
   final TabController tabController;
   final String text;
-  final TextEditingController? emailController;
-  final TextEditingController? passwordController;
+
 
   const CustomButton({
     Key? key,
     required this.tabController,
     this.text = 'Start',
-    this.emailController,
-    this.passwordController,
   }) : super(key: key);
 
   @override
@@ -22,17 +20,11 @@ class CustomButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       child: ElevatedButton(
-        onPressed: () async {
-          if (emailController != null && passwordController != null) {
-            await FirebaseAuth.instance
-                .createUserWithEmailAndPassword(
-                  email: emailController!.text,
-                  password: passwordController!.text,
-                )
-                .then((value) => print('User Added'))
-                .catchError((e) => print('Faelied'));
-          }
+        onPressed: () {
           tabController.animateTo(tabController.index + 1);
+          if(tabController.index == 2){
+            context.read<SignupCubit>().signupWithCredential();
+          }
         },
         child: Container(
             width: double.infinity,
